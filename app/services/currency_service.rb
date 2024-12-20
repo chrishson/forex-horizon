@@ -14,7 +14,7 @@ class CurrencyService
 
   def rates
     # TODO: Replace with actual API call
-    # 
+    #
     # Using: https://www.exchangerate-api.com/docs/standard-requests
     # url = URI("#{ENV['EXCHANGE_RATE_API_URL']}/CAD")
     #
