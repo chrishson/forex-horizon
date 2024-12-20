@@ -1,0 +1,7 @@
+<h1>Forex Horizon</h1>
+
+<% if @api_data.present? %>
+  <p>Current CAD TO USD Exchange Rate: <%= @base_to_quote_conversion_rate %></p>
+<% else %>
+  <p><%= @error_message || "No data available." %></p>
+<% end %>
