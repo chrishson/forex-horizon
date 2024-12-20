@@ -1,7 +1,41 @@
 <h1>Forex Horizon</h1>
 
-<% if @api_data.present? %>
-  <p>Current CAD TO USD Exchange Rate: <%= @base_to_quote_conversion_rate %></p>
-<% else %>
-  <p><%= @error_message || "No data available." %></p>
-<% end %>
+<div id="projected_income">
+  <%= render partial: 'income_forecast/projected_income' %>
+</div>
+
+<div id="calculation_form">
+  <%= form_with url: income_forecast_path, method: :post, data: { turbo: true } do |form| %>
+    <div>
+      <%= form.label :base_currency, 'Base Currency' %>
+      <%= form.select :base_currency,
+                      options_for_select(%w[USD CAD], @base_currency),
+                      prompt: 'Select Base Currency' %>
+    </div>
+
+    <div>
+      <%= form.label :quote_currency, 'Quote Currency' %>
+      <%= form.select :quote_currency,
+                      options_for_select(%w[USD CAD], @quote_currency),
+                      prompt: 'Select Quote Currency' %>
+    </div>
+
+    <div>
+      <%= form.label :hours_per_day, 'Hours Per Day' %>
+      <%= form.number_field :hours_per_day, step: 0.01 %>
+    </div>
+
+    <div>
+      <%= form.label :hourly_rate_dollars, 'Hourly Rate' %>
+      <%= form.number_field :hourly_rate_dollars, step: 0.01 %>
+    </div>
+
+    <div>
+      <%= form.submit 'Calculate' %>
+    </div>
+  <% end %>
+</div>
+
+<div id="calculation_result">
+  <!-- The result will be dynamically updated here -->
+</div>
