@@ -1,0 +1,19 @@
+<div data-controller="income-forecast">
+  <div>
+    <label for="base_currency">Base Currency</label>
+    <select id="base_currency" data-income-forecast-target="baseCurrency" data-action="change->income-forecast#updateConversionRate">
+      <!--TODO: Replace with API currencies later.-->
+      <option value="USD" <%= 'selected' if @base_currency == 'USD' %>>USD</option>
+      <option value="CAD" <%= 'selected' if @base_currency == 'CAD' %>>CAD</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="quote_currency">Quote Currency</label>
+    <select id="quote_currency" data-income-forecast-target="quoteCurrency" data-action="change->income-forecast#updateConversionRate">
+      <!--TODO: Replace with API currencies later.-->
+      <option value="USD" <%= 'selected' if @quote_currency == 'USD' %>>USD</option>
+      <option value="CAD" <%= 'selected' if @quote_currency == 'CAD' %>>CAD</option>
+    </select>
+  </div>
+</div>

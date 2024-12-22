@@ -1,41 +1,15 @@
 <h1>Forex Horizon</h1>
 
-<div id="projected_income">
-  <%= render partial: 'income_forecast/projected_income' %>
-</div>
+<div data-controller="income-forecast">
+  <!--  TODO: Make these into components?-->
 
-<div id="calculation_form">
-  <%= form_with url: income_forecast_path, method: :post, data: { turbo: true } do |form| %>
-    <div>
-      <%= form.label :base_currency, 'Base Currency' %>
-      <%= form.select :base_currency,
-                      options_for_select(%w[USD CAD], @base_currency),
-                      prompt: 'Select Base Currency' %>
-    </div>
+  <div>
+    Live Conversion Rate: <%= render partial: "conversion_rate", locals: { conversion_rate: @conversion_rate} %>
+  </div>
 
-    <div>
-      <%= form.label :quote_currency, 'Quote Currency' %>
-      <%= form.select :quote_currency,
-                      options_for_select(%w[USD CAD], @quote_currency),
-                      prompt: 'Select Quote Currency' %>
-    </div>
+  <%= render partial: "currencies_selection" %>
 
-    <div>
-      <%= form.label :hours_per_day, 'Hours Per Day' %>
-      <%= form.number_field :hours_per_day, step: 0.01 %>
-    </div>
+  <%= render partial: "form" %>
 
-    <div>
-      <%= form.label :hourly_rate_dollars, 'Hourly Rate' %>
-      <%= form.number_field :hourly_rate_dollars, step: 0.01 %>
-    </div>
-
-    <div>
-      <%= form.submit 'Calculate' %>
-    </div>
-  <% end %>
-</div>
-
-<div id="calculation_result">
-  <!-- The result will be dynamically updated here -->
+  <%= render partial: "projected_income", locals: { projected_remaining_income: @projected_remaining_income, projected_remaining_income_in_quote_currency: @projected_remaining_income_in_quote_currency } %>
 </div>

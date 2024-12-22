@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   get 'income-forecast' => 'income_forecast#index'
   post 'income-forecast' => 'income_forecast#create'
+
+  get 'income-forecast/update' => 'income_forecast#update'
 end
