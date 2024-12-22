@@ -10,7 +10,7 @@ class IncomeCalculator
     Money.new(@hours_per_day * @hourly_rate_cents * @business_days)
   end
 
-  def converted_income
-    base_income / @conversion_rate
+  def quote_income
+    base_income * @conversion_rate.to_f
   end
 end

@@ -14,8 +14,8 @@
   <%= render partial: "projected_income_errors", locals: { errors: @errors || [] } %>
 
   <%= render partial: "projected_income", locals: {
-      projected_remaining_income: @projected_remaining_income,
-      projected_remaining_income_in_quote_currency: @projected_remaining_income_in_quote_currency,
+      base_income: @base_income,
+      quote_income: @quote_income,
       business_days_remaining: @business_days_remaining,
       weekend_days_remaining: @weekend_days_remaining,
       total_days_remaining: @total_days_remaining

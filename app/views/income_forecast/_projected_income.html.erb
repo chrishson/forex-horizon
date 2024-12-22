@@ -1,9 +1,9 @@
 <turbo-frame id="projected_income">
-  <% if @projected_remaining_income %>
+  <% if @base_income %>
     <p>Total Days Remaining: <%= total_days_remaining %></p>
     <p>Business Days Remaining: <%= business_days_remaining %></p>
     <p>Weekend Days Remaining: <%= weekend_days_remaining %></p>
-    <p>Projected Remaining Income: <%= projected_remaining_income %></p>
-    <p>Projected Remaining Income in Quote Currency: <%= projected_remaining_income_in_quote_currency %></p>
+    <p>Projected Remaining Income in Base Currency: <%= base_income %></p>
+    <p>Projected Remaining Income in Quote Currency: <%= quote_income %></p>
   <% end %>
 </turbo-frame>

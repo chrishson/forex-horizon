@@ -20,8 +20,8 @@ class IncomeForecastController < ApplicationController
             'projected_income',
             partial: 'income_forecast/projected_income',
             locals: {
-              projected_remaining_income: @projected_remaining_income,
-              projected_remaining_income_in_quote_currency: @projected_remaining_income_in_quote_currency,
+              base_income: @base_income,
+              quote_income: @quote_income,
               business_days_remaining: @business_days_remaining,
               weekend_days_remaining: @weekend_days_remaining,
               total_days_remaining: @total_days_remaining
@@ -82,8 +82,8 @@ class IncomeForecastController < ApplicationController
     )
 
     @errors = []
-    @projected_remaining_income = @income_calculator.base_income
-    @projected_remaining_income_in_quote_currency = @income_calculator.converted_income
+    @base_income = @income_calculator.base_income
+    @quote_income = @income_calculator.quote_income
   end
 
   def currency_params
@@ -97,9 +97,7 @@ class IncomeForecastController < ApplicationController
   def validate_form_params
     @errors = []
     form_params.each do |key, value|
-      if value.blank? || value.to_f <= 0
-        @errors << "#{key} must be a positive number"
-      end
+      @errors << "#{key} must be a positive number" if value.blank? || value.to_f <= 0
     end
   end
 end
