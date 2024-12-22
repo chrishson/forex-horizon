@@ -1,4 +1,4 @@
-<%= form_with url: income_forecast_path, method: :post, data: { turbo: true } do |form| %>
+<%= form_with url: url_for(controller: 'income_forecast', action: 'update_forecasted_income', only_path: false), method: :post, data: { turbo: true } do |form| %>
   <div>
     <%= form.label :conversion_rate, 'Base:Quote Conversion Rate' %>
     <%= form.number_field :conversion_rate, step: 0.01, data: { income_forecast_target: "conversionRateInput" } %>

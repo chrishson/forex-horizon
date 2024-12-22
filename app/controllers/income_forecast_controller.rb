@@ -1,10 +1,10 @@
 class IncomeForecastController < ApplicationController
   before_action :set_conversion_rate
-  before_action :set_projected_income, only: %i[create]
+  before_action :set_projected_income, only: %i[update_forecasted_income]
 
   def index; end
 
-  def create
+  def update_forecasted_income
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
@@ -21,7 +21,7 @@ class IncomeForecastController < ApplicationController
     end
   end
 
-  def update
+  def update_conversion_rate
     respond_to do |format|
       format.turbo_stream do
         @conversion_rate = CurrencyConversion.conversion_rate(
