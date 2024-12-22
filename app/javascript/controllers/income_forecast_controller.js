@@ -4,8 +4,8 @@ export default class extends Controller {
     static targets = [
         "conversionRateInput",
         "liveRateInput",
-        "baseCurrencyTarget",
-        "quoteCurrencyTarget"
+        "baseCurrency",
+        "quoteCurrency"
     ]
 
     static values = {}
@@ -16,14 +16,14 @@ export default class extends Controller {
     }
 
     updateConversionRate() {
-      const form = this.element
-      const url = "/income-forecast/update"
+      const url = "/income-forecast/update-conversion-rate"
       const params = new URLSearchParams({
-        base_currency: this.baseCurrencyTargetTarget.value,
-        quote_currency: this.quoteCurrencyTargetTarget.value
+        base_currency: this.baseCurrencyTarget.value,
+        quote_currency: this.quoteCurrencyTarget.value
       })
 
       fetch(`${url}?${params}`, {
+          method: "POST",
           headers: {
               "X-CSRF-Token": document.querySelector("[name='csrf-token']").content,
               // set Accept header to issue a proper TURBO_STREAM request
