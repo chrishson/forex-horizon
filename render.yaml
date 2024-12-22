@@ -7,7 +7,7 @@ databases:
 services:
   # redis for cache and bg jobs
   - type: redis
-    name: sidekiq-redis
+    name: redis
     ipAllowList: [ ] # only allow internal connections
     plan: free # optional (defaults to starter)
     maxmemoryPolicy: noeviction
