@@ -21,7 +21,10 @@ class IncomeForecastController < ApplicationController
             partial: 'income_forecast/projected_income',
             locals: {
               projected_remaining_income: @projected_remaining_income,
-              projected_remaining_income_in_quote_currency: @projected_remaining_income_in_quote_currency
+              projected_remaining_income_in_quote_currency: @projected_remaining_income_in_quote_currency,
+              business_days_remaining: @business_days_remaining,
+              weekend_days_remaining: @weekend_days_remaining,
+              total_days_remaining: @total_days_remaining
             }
           )
         ]
@@ -59,13 +62,23 @@ class IncomeForecastController < ApplicationController
   end
 
   def set_projected_income
+    # TODO: Not really just projected_income, refactor name and what it does later.
     return if @conversion_rate.blank?
+
+    days_remaining_service = DaysRemaining.new(
+      start_date: form_params[:start_date].to_date,
+      end_date: form_params[:end_date].to_date
+    )
+
+    @business_days_remaining = days_remaining_service.business_days_remaining
+    @weekend_days_remaining = days_remaining_service.weekend_days_remaining
+    @total_days_remaining = days_remaining_service.total_days_remaining
 
     @income_calculator = IncomeCalculator.new(
       hours_per_day: form_params[:hours_per_day],
       hourly_rate: form_params[:hourly_rate],
       conversion_rate: form_params[:conversion_rate],
-      business_days: BusinessDaysCalculator.remaining_days_in_year
+      business_days: @business_days_remaining
     )
 
     @errors = []
@@ -78,7 +91,7 @@ class IncomeForecastController < ApplicationController
   end
 
   def form_params
-    params.permit(:hours_per_day, :hourly_rate, :conversion_rate)
+    params.permit(:hours_per_day, :hourly_rate, :conversion_rate, :start_date, :end_date)
   end
 
   def validate_form_params
