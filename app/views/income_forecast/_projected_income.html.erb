@@ -1,4 +1,4 @@
-<% if @projected_remaining_income.present? %>
-  <p>Projected Remaining Income: <%= @projected_remaining_income %></p>
-  <p>Projected Remaining Income in Quote Currency: <%= @projected_remaining_income_in_quote_currency %></p>
-<% end %>
+<turbo-frame id="projected_income">
+  <p>Projected Remaining Income: <%= projected_remaining_income %></p>
+  <p>Projected Remaining Income in Quote Currency: <%= projected_remaining_income_in_quote_currency %></p>
+</turbo-frame>
