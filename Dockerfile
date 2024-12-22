@@ -11,9 +11,8 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development" \
-    RAILS_SERVE_STATIC_FILES="1"
-
+    BUNDLE_WITHOUT="development"
+    
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
