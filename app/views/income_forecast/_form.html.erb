@@ -6,6 +6,16 @@
   </div>
 
   <div>
+    <%= form.label :start_date, 'Start Date' %>
+    <%= form.date_field :start_date, value: Time.zone.today %>
+  </div>
+
+  <div>
+    <%= form.label :end_date, 'End Date' %>
+    <%= form.date_field :end_date, value:Time.zone.today.end_of_year %>
+  </div>
+
+  <div>
     <%= form.label :hours_per_day, 'Hours Per Day' %>
     <%= form.number_field :hours_per_day, step: 0.01 %>
   </div>
