@@ -29,7 +29,3 @@ services:
         sync: false
       - key: WEB_CONCURRENCY
         value: 2 # sensible default
-      - key: RAILS_ENV
-        value: production
-      - key: RAILS_SERVE_STATIC_FILES
-        value: true

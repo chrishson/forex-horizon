@@ -1,13 +1,21 @@
 class IncomeForecastController < ApplicationController
-  before_action :set_conversion_rate
-  before_action :set_projected_income, only: %i[update_forecasted_income]
+  before_action :validate_form_params, only: %i[update_forecasted_income]
 
+  before_action :set_conversion_rate
+  before_action :set_projected_income, only: %i[update_forecasted_income], if: -> { @errors.blank? }
   def index; end
 
   def update_forecasted_income
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
+          turbo_stream.replace(
+            'projected_income_errors',
+            partial: 'income_forecast/projected_income_errors',
+            locals: {
+              errors: @errors
+            }
+          ),
           turbo_stream.replace(
             'projected_income',
             partial: 'income_forecast/projected_income',
@@ -60,6 +68,7 @@ class IncomeForecastController < ApplicationController
       business_days: BusinessDaysCalculator.remaining_days_in_year
     )
 
+    @errors = []
     @projected_remaining_income = @income_calculator.base_income
     @projected_remaining_income_in_quote_currency = @income_calculator.converted_income
   end
@@ -70,5 +79,14 @@ class IncomeForecastController < ApplicationController
 
   def form_params
     params.permit(:hours_per_day, :hourly_rate_dollars, :conversion_rate)
+  end
+
+  def validate_form_params
+    @errors = []
+    form_params.each do |key, value|
+      if value.blank? || value.to_f <= 0
+        @errors << "#{key} must be a positive number"
+      end
+    end
   end
 end
