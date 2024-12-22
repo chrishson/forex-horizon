@@ -233,6 +233,7 @@ GEM
     rake (13.2.1)
     rdoc (6.10.0)
       psych (>= 4.0.0)
+    redis (4.8.1)
     regexp_parser (2.9.2)
     reline (0.6.0)
       io-console (~> 0.5)
@@ -308,6 +309,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.1)
+  redis (>= 4.0.1)
   rubocop
   rubocop-rails
   rubocop-rspec
