@@ -11,5 +11,7 @@
 
   <%= render partial: "form" %>
 
+  <%= render partial: "projected_income_errors", locals: { errors: @errors || [] } %>
+
   <%= render partial: "projected_income", locals: { projected_remaining_income: @projected_remaining_income, projected_remaining_income_in_quote_currency: @projected_remaining_income_in_quote_currency } %>
 </div>
