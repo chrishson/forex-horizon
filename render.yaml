@@ -5,6 +5,14 @@ databases:
     plan: free
 
 services:
+  # redis for cache and bg jobs
+  - type: redis
+    name: sidekiq-redis
+    ipAllowList: [ ] # only allow internal connections
+    plan: free # optional (defaults to starter)
+    maxmemoryPolicy: noeviction
+
+  #  main app
   - type: web
     name: mysite
     runtime: ruby
