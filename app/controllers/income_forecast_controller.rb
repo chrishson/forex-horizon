@@ -63,7 +63,7 @@ class IncomeForecastController < ApplicationController
 
     @income_calculator = IncomeCalculator.new(
       hours_per_day: form_params[:hours_per_day],
-      hourly_rate: form_params[:hourly_rate_dollars],
+      hourly_rate: form_params[:hourly_rate],
       conversion_rate: form_params[:conversion_rate],
       business_days: BusinessDaysCalculator.remaining_days_in_year
     )
@@ -78,7 +78,7 @@ class IncomeForecastController < ApplicationController
   end
 
   def form_params
-    params.permit(:hours_per_day, :hourly_rate_dollars, :conversion_rate)
+    params.permit(:hours_per_day, :hourly_rate, :conversion_rate)
   end
 
   def validate_form_params
