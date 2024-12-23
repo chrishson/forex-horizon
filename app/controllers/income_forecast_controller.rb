@@ -10,8 +10,8 @@ class IncomeForecastController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace(
-            'projected_income_errors',
-            partial: 'income_forecast/projected_income_errors',
+            'form_errors',
+            partial: 'income_forecast/form_errors',
             locals: {
               errors: @errors
             }

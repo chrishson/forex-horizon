@@ -1,24 +1,28 @@
-<h1>Forex Horizon</h1>
-
-<div data-controller="income-forecast">
+<div data-controller="income-forecast" class="flex flex-col gap-8 w-1/2">
   <!--  TODO: Make these into components?-->
 
-  <div>
-    Live Conversion Rate: <%= render partial: "conversion_rate", locals: { conversion_rate: @conversion_rate} %>
+  <div class="p-2 bg-white rounded-lg shadow-md">
+    <%= render partial: "currencies_selection", locals: {
+      base_currency: @base_currency,
+      quote_currency: @quote_currency,
+      conversion_rate: @conversion_rate
+    } %>
   </div>
 
-  <%= render partial: "currencies_selection" %>
+  <div class="p-2 pb-4 bg-white rounded-lg shadow-md">
+    <%= render partial: "form" %>
+    <!--TODO: Errors should be beside associated input and styled -->
+    <%= render partial: "form_errors", locals: { errors: @errors || [] } %>
+  </div>
 
-  <%= render partial: "form" %>
-
-  <%= render partial: "projected_income_errors", locals: { errors: @errors || [] } %>
-
-  <%= render partial: "projected_income", locals: {
+  <div class="p-2 bg-white rounded-lg shadow-md">
+    <%= render partial: "projected_income", locals: {
       base_income: @base_income,
       quote_income: @quote_income,
       business_days_remaining: @business_days_remaining,
       weekend_days_remaining: @weekend_days_remaining,
       total_days_remaining: @total_days_remaining
     }
-  %>
+    %>
+  </div>
 </div>
