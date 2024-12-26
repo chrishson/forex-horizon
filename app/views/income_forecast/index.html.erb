@@ -7,7 +7,7 @@
     weekend_days_remaining: @weekend_days_remaining,
     total_days_remaining: @total_days_remaining } %>
 
-  <%= render partial: "currency_conversion_form", locals: {
+  <%= render partial: "currency_conversion", locals: {
     base_currency: @base_currency,
     quote_currency: @quote_currency,
     conversion_rate: @conversion_rate } %>
