@@ -7,15 +7,14 @@
     weekend_days_remaining: @weekend_days_remaining,
     total_days_remaining: @total_days_remaining } %>
 
-  <%= render partial: "currencies_selection", locals: {
+  <%= render partial: "currency_conversion_form", locals: {
     base_currency: @base_currency,
     quote_currency: @quote_currency,
-    conversion_rate: @conversion_rate
-  } %>
+    conversion_rate: @conversion_rate } %>
 
   <div class="p-2 pb-4 bg-white rounded-lg shadow-md">
-    <%= render partial: "form" %>
+    <%= render partial: "income_forecast_form" %>
     <!--TODO: Errors should be beside associated input and styled -->
-    <%= render partial: "form_errors", locals: { errors: @errors || [] } %>
+    <%= render partial: "income_forecast_form_errors", locals: { errors: @errors || [] } %>
   </div>
 </div>
