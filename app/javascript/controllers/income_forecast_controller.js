@@ -15,6 +15,14 @@ export default class extends Controller {
         this.conversionRateInputTarget.value = liveRate
     }
 
+    swapCurrencies() {
+        const baseCurrency = this.baseCurrencyTarget.value
+        const quoteCurrency = this.quoteCurrencyTarget.value
+        this.baseCurrencyTarget.value = quoteCurrency
+        this.quoteCurrencyTarget.value = baseCurrency
+        this.updateConversionRate()
+    }
+
     updateConversionRate() {
       const url = "/income-forecast/update-conversion-rate"
       const params = new URLSearchParams({
