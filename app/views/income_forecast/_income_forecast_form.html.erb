@@ -1,4 +1,4 @@
-<%= form_with url: url_for(controller: 'forms/income_forecast_form', action: 'index', only_path: false), method: :post, data: { turbo: true }, class: "space-y-4" do |form| %>
+<%= form_with url: url_for(controller: 'forms/income_forecast_form', action: 'update_forecasted_income', only_path: false), method: :post, data: { turbo: true }, class: "space-y-4" do |form| %>
   <div class="flex gap-4">
     <div class="w-full">
       <%= form.label :conversion_rate, 'Exchange Rate', class: "block text-sm font-medium text-gray-700" %>
