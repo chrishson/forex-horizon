@@ -24,7 +24,7 @@ export default class extends Controller {
     }
 
     updateConversionRate() {
-      const url = "/forms/currency-conversion-form/update-conversion-rate"
+      const url = "/income-forecast/update-conversion-rate"
       const params = new URLSearchParams({
         base_currency: this.baseCurrencyTarget.value,
         quote_currency: this.quoteCurrencyTarget.value
