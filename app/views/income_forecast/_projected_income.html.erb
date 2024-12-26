@@ -1,25 +1,27 @@
 <turbo-frame id="projected_income">
   <% if @base_income %>
-    <h2 class="text-xl font-semibold text-gray-800 mb-4">Projected Remaining Income</h2>
-    <div class="flex justify-between text-gray-600">
-      <span>Total Days Remaining:</span>
-      <span class="font-medium text-gray-900"><%= total_days_remaining %></span>
-    </div>
-    <div class="flex justify-between text-gray-600">
-      <span>Business Days Remaining:</span>
-      <span class="font-medium text-gray-900"><%= business_days_remaining %></span>
-    </div>
-    <div class="flex justify-between text-gray-600">
-      <span>Weekend Days Remaining:</span>
-      <span class="font-medium text-gray-900"><%= weekend_days_remaining %></span>
-    </div>
-    <div class="flex justify-between text-gray-600">
-      <span>Base Currency:</span>
-      <span class="font-medium text-gray-900"><%= base_income %></span>
-    </div>
-    <div class="flex justify-between text-gray-600">
-      <span>Quote Currency:</span>
-      <span class="font-medium text-gray-900"><%= quote_income %></span>
+    <div class="p-2 bg-white rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Projected Income</h2>
+        <div class="flex justify-between text-gray-600">
+          <span>Total Days Remaining:</span>
+          <span class="font-medium text-gray-900"><%= total_days_remaining %></span>
+        </div>
+        <div class="flex justify-between text-gray-600">
+          <span>Business Days Remaining:</span>
+          <span class="font-medium text-gray-900"><%= business_days_remaining %></span>
+        </div>
+        <div class="flex justify-between text-gray-600">
+          <span>Weekend Days Remaining:</span>
+          <span class="font-medium text-gray-900"><%= weekend_days_remaining %></span>
+        </div>
+        <div class="flex justify-between text-gray-600">
+          <span>Base Currency:</span>
+          <span class="font-medium text-gray-900"><%= base_income %></span>
+        </div>
+        <div class="flex justify-between text-gray-600">
+          <span>Quote Currency:</span>
+          <span class="font-medium text-gray-900"><%= quote_income %></span>
+        </div>
     </div>
   <% end %>
 </turbo-frame>
