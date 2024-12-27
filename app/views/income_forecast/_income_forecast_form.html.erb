@@ -1,10 +1,10 @@
-<%= form_with url: url_for(controller: 'forms/income_forecast_form', action: 'update_forecasted_income', only_path: false), method: :post, data: { turbo: true }, class: "space-y-4" do |form| %>
+<%= form_with url: url_for(controller: 'forms/income_forecast_form', action: 'update_forecasted_income', only_path: false), method: :post, data: { turbo: true }, class: 'space-y-4' do |form| %>
   <div class="flex gap-4">
     <div class="w-full">
-      <%= form.label :conversion_rate, 'Exchange Rate', class: "block text-sm font-medium text-gray-700" %>
+      <%= form.label :conversion_rate, 'Exchange Rate', class: 'block text-sm font-medium text-gray-700' %>
       <%= form.number_field :conversion_rate, step: 0.01,
-                            data: { income_forecast_target: "conversionRateInput" },
-                            class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+                                              data: { income_forecast_target: 'conversionRateInput' },
+                                              class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
     </div>
     <div class="flex mt-6">
       <button type="button" data-action="click->income-forecast#update" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 whitespace-nowrap">Use Live Rate</button>
@@ -12,41 +12,41 @@
   </div>
 
   <div class="space-y-2">
-    <%= form.label :start_date, 'Start Date', class: "block text-sm font-medium text-gray-700" %>
-    <%= form.date_field :start_date, value: Time.zone.today, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+    <%= form.label :start_date, 'Start Date', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.date_field :start_date, value: Time.zone.today, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
   </div>
 
   <div class="space-y-2">
-    <%= form.label :end_date, 'End Date', class: "block text-sm font-medium text-gray-700" %>
-    <%= form.date_field :end_date, value: Time.zone.today.end_of_year, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+    <%= form.label :end_date, 'End Date', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.date_field :end_date, value: Time.zone.today.end_of_year, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
   </div>
 
   <div class="space-y-2">
-    <%= form.label :hourly_rate, 'What is your hourly rate?', class: "block text-sm font-medium text-gray-700" %>
-    <%= form.number_field :hourly_rate, step: 0.01, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+    <%= form.label :hourly_rate, 'What is your hourly rate?', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.number_field :hourly_rate, step: 0.01, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
   </div>
 
   <div class="space-y-2">
-    <%= form.label :hours_per_day, 'How many Hours per Day do you usually work?', class: "block text-sm font-medium text-gray-700" %>
-    <%= form.number_field :hours_per_day, step: 0.01, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+    <%= form.label :hours_per_day, 'How many Hours per Day do you usually work?', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.number_field :hours_per_day, step: 0.01, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
   </div>
 
   <div class="space-y-2">
-    <%= form.label :days_per_week, 'How many Days per Week do you usually work?', class: "block text-sm font-medium text-gray-700" %>
-    <%= form.number_field :days_per_week, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+    <%= form.label :days_per_week, 'How many Days per Week do you usually work?', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.number_field :days_per_week, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
   </div>
 
   <div class="space-y-2">
-    <%= form.label :working_hours_remaining_this_week, 'How many more Hours will you work this week?', class: "block text-sm font-medium text-gray-700" %>
-    <%= form.number_field :working_hours_remaining_this_week, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+    <%= form.label :working_hours_remaining_this_week, 'How many more Hours will you work this week?', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.number_field :working_hours_remaining_this_week, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
   </div>
 
   <div class="space-y-2">
-    <%= form.label :days_off, 'How many Days do you plan on taking off before the End Date?', class: "block text-sm font-medium text-gray-700" %>
-    <%= form.number_field :days_off, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+    <%= form.label :days_off, 'How many Days do you plan on taking off before the End Date?', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.number_field :days_off, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
   </div>
 
   <div class="text-right">
-    <%= form.submit 'Forecast My Income', class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    <%= form.submit 'Forecast My Income', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
   </div>
 <% end %>

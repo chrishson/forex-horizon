@@ -1,9 +1,9 @@
 class HoursRemainingCalculator
-  def initialize(start_date:, 
-                 end_date:, 
-                 hours_per_day:, 
-                 days_per_week:, 
-                 working_hours_remaining_this_week: 0, 
+  def initialize(start_date:,
+                 end_date:,
+                 hours_per_day:,
+                 days_per_week:,
+                 working_hours_remaining_this_week: 0,
                  days_off: 0)
     @start_date = start_date
     @end_date = end_date

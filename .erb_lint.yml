@@ -1,6 +1,9 @@
----
 EnableDefaultLinters: true
+
 linters:
+  PartialInstanceVariableWithCurrent:
+    enabled: true
+    exclude:
   Rubocop:
     enabled: true
     rubocop_config:
@@ -24,3 +27,10 @@ linters:
         Enabled: false
       Rails/OutputSafety:
         Enabled: false
+  CheckStyleUse:
+    enabled: true
+
+exclude:
+  - "**/vendor/**/*"
+  - "**/node_modules/**/*"
+  - '.erb-linters/**'

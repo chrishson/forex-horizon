@@ -1,20 +1,23 @@
 <div data-controller="income-forecast" class="flex flex-col gap-2 w-full px-5">
   <!--  TODO: Make these into components?-->
-  <%= render partial: "projected_income", locals: {
-    base_income: @base_income,
-    quote_income: @quote_income,
-    weekday_days_remaining: @weekday_days_remaining,
-    weekend_days_remaining: @weekend_days_remaining,
-    total_days_remaining: @total_days_remaining } %>
+  <%= render partial: 'projected_income', locals: {
+        base_income: @base_income,
+        quote_income: @quote_income,
+        total_hours: @total_hours,
+        weekday_days_remaining: @weekday_days_remaining,
+        weekend_days_remaining: @weekend_days_remaining,
+        total_days_remaining: @total_days_remaining
+      } %>
 
-  <%= render partial: "currency_conversion", locals: {
-    base_currency: @base_currency,
-    quote_currency: @quote_currency,
-    conversion_rate: @conversion_rate } %>
+  <%= render partial: 'currency_conversion', locals: {
+        base_currency: @base_currency,
+        quote_currency: @quote_currency,
+        conversion_rate: @conversion_rate
+      } %>
 
   <div class="p-2 pb-4 bg-white rounded-lg shadow-md">
-    <%= render partial: "income_forecast_form" %>
+    <%= render partial: 'income_forecast_form' %>
     <!--TODO: Errors should be beside associated input and styled -->
-    <%= render partial: "income_forecast_form_errors", locals: { errors: @errors || [] } %>
+    <%= render partial: 'income_forecast_form_errors', locals: { errors: @errors || [] } %>
   </div>
 </div>
