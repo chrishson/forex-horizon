@@ -1,13 +1,12 @@
 class IncomeCalculator
-  def initialize(hours_per_day:, hourly_rate:, conversion_rate:, business_days:)
-    @hours_per_day = hours_per_day.to_i
-    @hourly_rate_cents = (hourly_rate.to_f * 100).to_i
+  def initialize(total_hours:, hourly_rate:, conversion_rate:)
+    @total_hours = total_hours
+    @hourly_rate = hourly_rate
     @conversion_rate = conversion_rate
-    @business_days = business_days
   end
 
   def base_income
-    Money.new(@hours_per_day * @hourly_rate_cents * @business_days)
+    @total_hours * @hourly_rate
   end
 
   def quote_income
