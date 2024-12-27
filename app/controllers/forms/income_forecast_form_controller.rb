@@ -23,6 +23,7 @@ module Forms
               locals: {
                 base_income: @base_income,
                 quote_income: @quote_income,
+                total_hours: @total_hours,
                 weekday_days_remaining: @weekday_days_remaining,
                 weekend_days_remaining: @weekend_days_remaining,
                 total_days_remaining: @total_days_remaining
