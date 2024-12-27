@@ -33,7 +33,7 @@ module Forms
       end
     end
 
-  private
+    private
 
     def set_projected_income
       # TODO: Not really just projected_income, refactor name and what it does later.
@@ -61,7 +61,16 @@ module Forms
     end
 
     def form_params
-      params.permit(:hours_per_day, :hourly_rate, :conversion_rate, :start_date, :end_date)
+      params.permit(
+        :hours_per_day,
+        :hourly_rate,
+        :days_per_week,
+        :hours_worked_this_week,
+        :days_to_take_off,
+        :conversion_rate,
+        :start_date,
+        :end_date
+      )
     end
 
     def validate_form_params
