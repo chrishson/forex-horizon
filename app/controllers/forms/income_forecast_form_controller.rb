@@ -23,7 +23,7 @@ module Forms
               locals: {
                 base_income: @base_income,
                 quote_income: @quote_income,
-                business_days_remaining: @business_days_remaining,
+                weekday_days_remaining: @weekday_days_remaining,
                 weekend_days_remaining: @weekend_days_remaining,
                 total_days_remaining: @total_days_remaining
               }
@@ -44,20 +44,29 @@ module Forms
         end_date: form_params[:end_date].to_date
       )
 
-      @business_days_remaining = days_remaining_service.business_days_remaining
+      @weekday_days_remaining = days_remaining_service.weekday_days_remaining
       @weekend_days_remaining = days_remaining_service.weekend_days_remaining
       @total_days_remaining = days_remaining_service.total_days_remaining
 
-      @income_calculator = IncomeCalculator.new(
+      # TODO: refactor params?
+      @total_hours = HoursRemainingCalculator.new(
+        start_date: form_params[:start_date].to_date,
+        end_date: form_params[:end_date].to_date,
         hours_per_day: form_params[:hours_per_day],
-        hourly_rate: form_params[:hourly_rate],
-        conversion_rate: form_params[:conversion_rate],
-        business_days: @business_days_remaining
+        days_per_week: form_params[:days_per_week],
+        working_hours_remaining_this_week: form_params[:working_hours_remaining_this_week],
+        days_off: form_params[:days_off]
+      ).total_hours
+
+      income_calculator = IncomeCalculator.new(
+        total_hours: @total_hours,
+        hourly_rate: form_params[:hourly_rate].to_f,
+        conversion_rate: form_params[:conversion_rate]
       )
 
       @errors = []
-      @base_income = @income_calculator.base_income
-      @quote_income = @income_calculator.quote_income
+      @base_income = income_calculator.base_income
+      @quote_income = income_calculator.quote_income
     end
 
     def form_params
@@ -65,8 +74,8 @@ module Forms
         :hours_per_day,
         :hourly_rate,
         :days_per_week,
-        :hours_worked_this_week,
-        :days_to_take_off,
+        :working_hours_remaining_this_week,
+        :days_off,
         :conversion_rate,
         :start_date,
         :end_date
@@ -76,6 +85,9 @@ module Forms
     def validate_form_params
       @errors = []
       form_params.each do |key, value|
+        # TODO: Really bad but temporary.
+        next if %i[working_hours_remaining_this_week days_off].include?(key.to_sym)
+
         @errors << "#{key} must be a positive number" if value.blank? || value.to_f <= 0
       end
     end
